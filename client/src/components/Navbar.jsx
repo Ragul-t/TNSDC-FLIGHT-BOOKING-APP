@@ -1,84 +1,50 @@
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
 import '../styles/Navbar.css';
 import { useNavigate } from 'react-router-dom';
 import { GeneralContext } from '../context/GeneralContext';
 
 const Navbar = () => {
-
     const navigate = useNavigate();
     const usertype = localStorage.getItem('userType');
+    const { logout } = useContext(GeneralContext);
 
-    const {logout} = useContext(GeneralContext);
-
-  return (
-    <>
-        <div className="navbar">
-
-        {!usertype ? 
-        
-            <>
-                <h3 >Kindigo</h3>
-
-                <div className="nav-options" >
-                    <p onClick={()=>navigate('/')}>Home</p>
-                    <p onClick={()=>navigate('/auth')}>Login</p>
-                </div>
-            
-            </>
-        :
-        
-        <>
-        {usertype === 'customer' ? 
-        
-        <>
-            <h3 >Kindigo</h3>
-
-            <div className="nav-options" >
-
-                <p onClick={()=>navigate('/')}>Home</p>
-                <p onClick={()=>navigate('/bookings')}>Bookings</p>
-                <p onClick={logout}>Logout</p>
-
+    return (
+        <nav className="new-navbar">
+            <div className="navbar-brand">
+                <h2 onClick={() => navigate('/')}>
+                    {usertype === 'admin' ? 'UNITED (Admin)' : usertype === 'flight-operator' ? 'UNITED (Op)' : 'UNITED'}
+                </h2>
             </div>
-        </>
-            :  usertype === 'admin' ?
-
+            <div className="navbar-links">
+                {!usertype ? (
                     <>
-                        <h3 >Kindigo (Admin)</h3>
-                        <div className="nav-options" >
-
-                            <p onClick={()=>navigate('/admin')}>Home</p>
-                            <p onClick={()=>navigate('/all-users')}>Users</p>
-                            <p onClick={()=>navigate('/all-bookings')}>Bookings</p>
-                            <p onClick={()=>navigate('/all-flights')}>Flights</p>
-                            <p onClick={logout}>Logout</p>
-                        </div> 
+                        <button onClick={() => navigate('/auth')}>Login</button>
                     </>
-            
-                : usertype === 'flight-operator' ?
+                ) : usertype === 'customer' ? (
                     <>
-                        <h3 >Kindigo (Operator)</h3>
-                        <div className="nav-options" >
-
-                            <p onClick={()=>navigate('/flight-admin')}>Home</p>
-                            <p onClick={()=>navigate('/flight-bookings')}>Bookings</p>
-                            <p onClick={()=>navigate('/flights')}>Flights</p>
-                            <p onClick={()=>navigate('/new-flight')}>Add Flight</p>
-                            <p onClick={logout}>Logout</p>
-                        </div> 
+                        <button onClick={() => navigate('/bookings')}>Bookings</button>
+                        <button onClick={logout}>Logout</button>
                     </>
-            
-                :
+                ) : usertype === 'admin' ? (
+                    <>
+                        <button onClick={() => navigate('/admin')}>Dashboard</button>
+                        <button onClick={() => navigate('/all-users')}>Users</button>
+                        <button onClick={() => navigate('/all-bookings')}>Bookings</button>
+                        <button onClick={() => navigate('/all-flights')}>Flights</button>
+                        <button onClick={logout}>Logout</button>
+                    </>
+                ) : usertype === 'flight-operator' ? (
+                    <>
+                        <button onClick={() => navigate('/flight-admin')}>Dashboard</button>
+                        <button onClick={() => navigate('/flight-bookings')}>Bookings</button>
+                        <button onClick={() => navigate('/flights')}>Flights</button>
+                        <button onClick={() => navigate('/new-flight')}>Add Flight</button>
+                        <button onClick={logout}>Logout</button>
+                    </>
+                ) : null}
+            </div>
+        </nav>
+    );
+};
 
-                    ""
-
-        }
-        </>
-        }
-        </div>
-    
-    </>
-  )
-}
-
-export default Navbar
+export default Navbar;

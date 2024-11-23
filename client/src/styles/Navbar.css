@@ -1,34 +1,51 @@
-.navbar{
-
-    height: 10vh;
+/* Modern Navbar Styling */
+.new-navbar {
     width: 100%;
-    position: fixed;
-    top: 0vh;
-    z-index: 10;
-    background-color: rgb(28, 82, 126) !important;
+    height: 12vh;
+    background-color: #1a1a2e;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 3%;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 0 5%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    z-index: 100;
 }
 
-.navbar h3{
-    color: aliceblue;
+.navbar-brand h2 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    margin: 0;
+    transition: color 0.3s ease;
 }
 
-.nav-options{
+.navbar-brand h2:hover {
+    color: #f59d3e;
+}
+
+.navbar-links {
     display: flex;
     gap: 20px;
 }
 
-.nav-options p{
-    margin: 0;
-    color: rgb(209, 210, 211);
-    text-decoration: none;
+.navbar-links button {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    color: #eaeaea;
+    background: #0f3460;
+    border: 2px solid transparent;
+    padding: 10px 20px;
+    border-radius: 8px;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.nav-options p:hover{
-    color: aliceblue;
+.navbar-links button:hover {
+    background: #e94560;
+    border-color: #f59d3e;
+    color: #fff;
 }
