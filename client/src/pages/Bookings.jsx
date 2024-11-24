@@ -31,7 +31,6 @@ const Bookings = () => {
 
   return (
     <div className="user-bookingsPage">
-      <h1>Bookings</h1>
 
       <div className="user-bookings">
 
