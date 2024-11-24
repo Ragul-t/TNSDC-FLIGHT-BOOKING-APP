@@ -18,6 +18,9 @@ const Login = ({setIsLogin}) => {
                                                                   onChange={(e) => setEmail(e.target.value)} />
             <label htmlFor="floatingInput">Email address</label>
         </div>
+        <div>
+          <br></br>
+        </div>
             <div className="form-floating mb-3 authFormInputs">
             <input type="password" className="form-control" id="floatingPassword" placeholder="Password" 
                                                                   onChange={(e) => setPassword(e.target.value)} /> 
